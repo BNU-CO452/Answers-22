@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.Random;
 
 /**
  * Write a description of class MyWorld here.
@@ -12,6 +13,7 @@ public class CrabWorld extends World
     private Lobster lobster;
     
     private Worm[] worms;
+    private Random generator;
     
     /**
      * Constructor for objects of class MyWorld.
@@ -29,10 +31,26 @@ public class CrabWorld extends World
         addObject(lobster, 600, 400);
         
         worms = new Worm[100];
+        generator = new Random();
+        
+        addWorms();
     }
     
-    public void AddWorms()
+    public void addWorms()
     {
+        for(int index = 0; index < 20; index++)
+        {
+            createWorm(index);
+        }
+    }
+    
+    private void createWorm(int number)
+    {
+        Worm worm = new Worm();
         
+        int x = generator.nextInt(getWidth());
+        int y = generator.nextInt(getHeight());
+        
+        addObject(worm, x, y);
     }
 }
