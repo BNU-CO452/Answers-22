@@ -13,6 +13,7 @@ public class CrabWorld extends World
     private Lobster lobster;
     
     private Worm[] worms;
+    private int wormSize;
     private Random generator;
     
     /**
@@ -33,6 +34,7 @@ public class CrabWorld extends World
         worms = new Worm[100];
         generator = new Random();
         
+        wormSize = 30;
         addWorms();
     }
     
@@ -50,6 +52,12 @@ public class CrabWorld extends World
         
         int x = generator.nextInt(getWidth());
         int y = generator.nextInt(getHeight());
+        
+        if(x < wormSize) x = wormSize;
+        if(x > getWidth() - wormSize) x = getWidth() - wormSize;
+        
+        if(y < wormSize) y = wormSize;
+        if(y > getHeight() - wormSize) y = getHeight() - wormSize;
         
         addObject(worm, x, y);
     }

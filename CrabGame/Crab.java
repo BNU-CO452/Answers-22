@@ -19,6 +19,8 @@ public class Crab extends Actor
     public Crab()
     {
         image = getImage();
+        //image.scale(40, 25);
+        
         width = image.getWidth();
         height = image.getHeight();
         
