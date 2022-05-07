@@ -9,6 +9,8 @@ import java.util.Random;
  */
 public class CrabWorld extends World
 {
+    public static final int MAXN_WORMS = 20;
+    
     private Crab crab;
     private Lobster lobster;
     
@@ -31,7 +33,7 @@ public class CrabWorld extends World
         lobster = new Lobster();
         addObject(lobster, 600, 400);
         
-        worms = new Worm[100];
+        worms = new Worm[MAXN_WORMS];
         generator = new Random();
         
         wormSize = 30;
@@ -40,7 +42,7 @@ public class CrabWorld extends World
     
     public void addWorms()
     {
-        for(int index = 0; index < 20; index++)
+        for(int index = 0; index < MAXN_WORMS; index++)
         {
             createWorm(index);
         }

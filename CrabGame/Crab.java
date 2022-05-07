@@ -19,10 +19,10 @@ public class Crab extends Actor
     public Crab()
     {
         image = getImage();
-        //image.scale(40, 25);
         
         width = image.getWidth();
         height = image.getHeight();
+        image.scale((int)(width * 0.8), (int)(height * 0.8));
         
         setRotation(90);
     }
@@ -34,6 +34,12 @@ public class Crab extends Actor
     public void act()
     {
         move4Ways();
+        
+        if(isTouching(Worm.class))
+        {
+            removeTouching(Worm.class);
+            Greenfoot.playSound("slurp.wav");
+        }
     }
     
     public void moveAndTurn()
