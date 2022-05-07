@@ -64,18 +64,13 @@ public class MarioWorld extends World
     {
         String reply;
         int size = 0;
-        boolean isValid = false;
 
-        while(!isValid)
+        do
         {
             reply = Greenfoot.ask("Enter the pyramid height (1-8) > ");
             size = Integer.parseInt(reply); 
             
-            if((size >= 1) && (size <= 8))
-            {
-                isValid = true;
-            }
-        }
+         } while((size < 1) || (size > 8));
 
         return size;
     } 
