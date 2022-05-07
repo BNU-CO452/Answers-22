@@ -16,6 +16,8 @@ public class Crab extends Actor
     
     protected GreenfootImage image;
     
+    private CrabWorld world;
+    
     public Crab()
     {
         image = getImage();
@@ -39,6 +41,9 @@ public class Crab extends Actor
         {
             removeTouching(Worm.class);
             Greenfoot.playSound("slurp.wav");
+    
+            world = (CrabWorld)getWorld();
+            world.score();
         }
     }
     
