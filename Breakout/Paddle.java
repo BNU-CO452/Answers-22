@@ -7,13 +7,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Derek Peacock
  * @version 0
  */
-public class Paddle extends Actor
+public class Paddle extends ShapeSprite
 {
-    protected int width;
-    protected int height;
     protected int speed = 4;
-    
-    protected GreenfootImage image;
     
     /**
      * Create a blue rectangle using a Greenfoot Image
@@ -21,13 +17,7 @@ public class Paddle extends Actor
      */
     public Paddle(int width, int height)
     {
-        this.width = width;
-        this.height = height;
-        
-        image = new GreenfootImage(width, height);
-        image.setColor(Color.RED);
-        image.fill();
-        setImage(image);
+         super(Shapes.Rectangle, width, height);
     }
     
     /**
@@ -36,7 +26,7 @@ public class Paddle extends Actor
      */
     public void act()
     {
-        moveWithKeys();
+        move();
     }
     
     /**
@@ -44,7 +34,7 @@ public class Paddle extends Actor
      * using coordinate positions.  Could use turtle graphics 
      * instead without x,y coordinates.
      */
-    public void moveWithKeys()
+    public void move()
     {
         int x = getX(); int y = getY();
         int halfWidth = width / 2;
@@ -71,9 +61,7 @@ public class Paddle extends Actor
         
         setLocation(x, y);
     }
-    
  
-    
     public void setSpeed(int speed)
     {
         this.speed = speed;

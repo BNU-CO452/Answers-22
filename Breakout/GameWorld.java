@@ -21,7 +21,7 @@ public class GameWorld extends World
         super(600, 400, 1); 
         
         paddle = new Paddle(10, 40);
-        ball = new Ball();
+        ball = new Ball(20,20);
         
         addObject(paddle, 10, 200);
         addObject(ball, 100, 200);

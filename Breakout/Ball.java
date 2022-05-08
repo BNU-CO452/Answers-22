@@ -8,10 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Derek Peacock 
  * @version 0
  */
-public class Ball extends Actor
+public class Ball extends ShapeSprite
 {
     private int speed = 5;
     private int angle = 45;
+    
+    public Ball(int width, int height)
+    {
+        super(Shapes.Oval, width, height);
+    }
     
     /**
      * Act - do whatever the Ball wants to do. This method is called whenever
