@@ -18,6 +18,7 @@ public class CrabWorld extends World
     private int wormSize;
     
     private Counter score;
+    private Label scoreLabel;
     
     private Random generator;
     
@@ -30,9 +31,6 @@ public class CrabWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
         
-        score = new Counter();
-        addObject (score, 60, 30);
-        
         crab = new Crab();
         addObject(crab, 200, 200);
         
@@ -44,7 +42,10 @@ public class CrabWorld extends World
         
         wormSize = 30;
         addWorms();
+        
+        setupScore();
     }
+    
     
     public void addWorms()
     {
@@ -72,6 +73,15 @@ public class CrabWorld extends World
     
     public void score()
     {
-        score.setValue(score.getValue() + 1);
+        score.setValue(score.getValue() + 10);
+    }
+    
+    private void setupScore()
+    {
+        score = new Counter();
+        addObject (score, 60, 35);
+        
+        scoreLabel = new Label("Score", 24);
+        addObject(scoreLabel, 40, 10);
     }
 }

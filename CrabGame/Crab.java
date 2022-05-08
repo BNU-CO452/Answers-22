@@ -11,7 +11,7 @@ public class Crab extends Actor
     protected int width;
     protected int height;
     
-    protected int speed = 2;
+    protected int speed = 3;
     protected int turnAngle = 4;
     
     protected GreenfootImage image;

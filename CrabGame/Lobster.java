@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
+import java.util.List;
 
 /**
  * Write a description of class Lobster here.
@@ -24,10 +25,20 @@ public class Lobster extends Actor
         
         if(number < 20)
         {
-            if(number < 10)
-                turn(-17);
+            List<Crab> crabs = getObjectsInRange(300, Crab.class);
+            
+            if(crabs.size() > 0)
+            {
+                Crab crab = crabs.get(0);
+                turnTowards(crab.getX(), crab.getY());
+            }
             else
-                turn(17);
+            {
+                if(number < 10)
+                    turn(-17);
+                else
+                    turn(17);
+            }
         }
         
         if(isAtEdge())
@@ -37,6 +48,7 @@ public class Lobster extends Actor
         {
             removeTouching(Crab.class);
             Greenfoot.playSound("au.wav");
-        }            
+        }
+        
     }
 }
