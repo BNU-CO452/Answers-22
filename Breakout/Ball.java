@@ -11,11 +11,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Ball extends ShapeSprite
 {
     private int speed = 5;
-    private int angle = 45;
+    
+    // Current velocity change in x and y
+    
+    private int dx;
+    private int dy;
     
     public Ball(int width, int height)
     {
         super(Shapes.Oval, width, height);
+        
+        dx = speed; dy = speed;
+        turn(45);
     }
     
     /**
@@ -24,13 +31,36 @@ public class Ball extends ShapeSprite
      */
     public void act()
     {
-        move(speed);
+        World world = getWorld();
+        int x = getX(); int y = getY();
         
-        if(isAtEdge()) 
+        if(x >= world.getWidth() - width) 
         {
-            //angle = -angle; 
-            turn(-angle);
-            
+            dx = -speed; 
         }
+        
+        if(y >= world.getHeight() - height)
+        {
+            dy = -speed;
+        }
+        
+        if(x <= 0)
+        {
+            dx = 0;
+            dy = 0;
+        }
+        
+        if(y <= 0)
+        {
+            dy = speed;
+        }
+        
+        
+        if(getOneIntersectingObject(Paddle.class)!=null)
+        {
+            dx = speed;
+        }
+        
+        setLocation(x + dx, y + dy);
     }
 }
