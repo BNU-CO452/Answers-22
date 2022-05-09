@@ -11,6 +11,8 @@ public class GameWorld extends World
     private Paddle paddle;
     private Ball ball;
     
+    private Counter score;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -20,10 +22,46 @@ public class GameWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
         
-        paddle = new Paddle(10, 40);
+        paddle = new Paddle(10, 80);
         ball = new Ball(20,20);
         
         addObject(paddle, 10, 200);
         addObject(ball, 100, 200);
+        
+        score = new Counter("Score: ");
+        addObject(score, 60, 20);
+        
+        setupBricks();
+    }
+    
+    public void endGame(boolean winGame)
+    {
+        if(winGame)
+        {
+            showText("Game Over: You Won!",300, 200);
+        }
+        else
+            showText("Game Over: You Lost!",300, 200);
+
+    }
+    
+    private void setupBricks()
+    {
+        int x = 500; int y = 50;
+        
+        for(int count = 0; count < 7; count++)
+        {
+            
+            Brick brick = new Brick(20, 40);
+            brick.setColor(Color.GRAY);
+            addObject(brick, x, y);
+            
+            y = y + 50;
+        }
+    }
+    
+    public void increaseScore()
+    {
+        score.add(10);
     }
 }

@@ -10,7 +10,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Ball extends ShapeSprite
 {
-    private int speed = 5;
+    private GameWorld game;
+    private int speed = 4;
     
     // Current velocity change in x and y
     
@@ -31,15 +32,16 @@ public class Ball extends ShapeSprite
      */
     public void act()
     {
-        World world = getWorld();
+        game = (GameWorld)getWorld();
+        
         int x = getX(); int y = getY();
         
-        if(x >= world.getWidth() - width) 
+        if(x >= game.getWidth() - width) 
         {
             dx = -speed; 
         }
         
-        if(y >= world.getHeight() - height)
+        if(y >= game.getHeight() - height)
         {
             dy = -speed;
         }
@@ -48,6 +50,8 @@ public class Ball extends ShapeSprite
         {
             dx = 0;
             dy = 0;
+            
+            game.endGame(false);
         }
         
         if(y <= 0)
@@ -55,12 +59,27 @@ public class Ball extends ShapeSprite
             dy = speed;
         }
         
-        
-        if(getOneIntersectingObject(Paddle.class)!=null)
-        {
-            dx = speed;
-        }
+        checkCollisions();
         
         setLocation(x + dx, y + dy);
+    }
+    
+    private void checkCollisions()
+    {
+        if(getOneIntersectingObject(Paddle.class) != null)
+        {
+            dx = speed;
+            return;
+        }
+        
+        if(getOneIntersectingObject(Brick.class) != null)
+        {
+            removeTouching(Brick.class);
+            game.increaseScore();
+            
+            dx = -dx;
+        }
+        
+        
     }
 }
