@@ -48,7 +48,12 @@ public class Lobster extends Actor
         {
             removeTouching(Crab.class);
             Greenfoot.playSound("au.wav");
+            CrabWorld world = (CrabWorld)getWorld();
+            
+            speed = 0;
+            world.endGame();
         }
         
     }
+    
 }

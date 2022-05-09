@@ -16,9 +16,9 @@ public class CrabWorld extends World
     
     private Worm[] worms;
     private int wormSize;
+    private int remainingWorms = MAXN_WORMS;
     
     private Counter score;
-    private Label scoreLabel;
     
     private Random generator;
     
@@ -74,14 +74,22 @@ public class CrabWorld extends World
     public void score()
     {
         score.setValue(score.getValue() + 10);
+        remainingWorms--;
+        
+        if(remainingWorms <= 0)
+        {
+            showText("Game Over: You Won!", 400, 300);    
+        }
     }
     
     private void setupScore()
     {
-        score = new Counter();
-        addObject (score, 60, 35);
-        
-        scoreLabel = new Label("Score", 24);
-        addObject(scoreLabel, 40, 10);
+        score = new Counter("Score: ");
+        addObject (score, 60, 30);
+    }
+    
+    public void endGame()
+    {
+        showText("Game Over: You have Lost!", 400, 300);
     }
 }
