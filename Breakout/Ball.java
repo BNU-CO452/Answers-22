@@ -69,6 +69,7 @@ public class Ball extends ShapeSprite
         if(getOneIntersectingObject(Paddle.class) != null)
         {
             dx = speed;
+            Greenfoot.playSound("pong.wav");
             return;
         }
         
@@ -76,10 +77,9 @@ public class Ball extends ShapeSprite
         {
             removeTouching(Brick.class);
             game.increaseScore();
+            Greenfoot.playSound("pong.wav");
             
             dx = -dx;
         }
-        
-        
     }
 }
