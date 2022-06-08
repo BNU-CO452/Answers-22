@@ -9,5 +9,8 @@ public class Program
         System.out.println();
         System.out.println(" by Nicholas Day and Derek Peacock");
         System.out.println();
+
+        Week01 exercise01 = new Week01();
+        exercise01.run();
     }
 }
