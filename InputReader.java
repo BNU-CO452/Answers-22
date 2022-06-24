@@ -14,10 +14,6 @@ public class InputReader
 {
     private static Scanner reader = new Scanner(System.in);
     
-    private static int intNumber;
-
-    private static double doubleNumber;
-
     /**
      * Read a line of text from standard input (the text terminal),
      * and return it as a String.
@@ -51,7 +47,7 @@ public class InputReader
      */
     public static int getInt(String prompt)
     {
-        intNumber = 0;
+        int number = 0;
         boolean isValid = false;
         
         while(!isValid)
@@ -59,7 +55,7 @@ public class InputReader
             System.out.print(prompt);         // print prompt
             try
             {
-                intNumber = reader.nextInt();
+                number = reader.nextInt();
                 isValid = true;
 
             } 
@@ -68,7 +64,7 @@ public class InputReader
                 System.out.println("That is not a valid integer number!");
             }
         }       
-        return intNumber;
+        return number;
     }
 
     /**
