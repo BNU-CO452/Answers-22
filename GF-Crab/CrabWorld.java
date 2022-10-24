@@ -51,11 +51,11 @@ public class CrabWorld extends World
     {
         for(int index = 0; index < MAXN_WORMS; index++)
         {
-            createWorm(index);
+            createWorm();
         }
     }
     
-    private void createWorm(int number)
+    private void createWorm()
     {
         Worm worm = new Worm();
         

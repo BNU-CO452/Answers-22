@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Crab extends Actor
+public class Crab extends Animal
 {
     protected int width;
     protected int height;
@@ -30,7 +30,8 @@ public class Crab extends Actor
     }
     
     /**
-     * Act - do whatever the MovingSprite wants to do. This method is called whenever
+     * Act - do whatever the MovingSprite wants to do. 
+     * This method is called repeatedly whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
@@ -39,7 +40,7 @@ public class Crab extends Actor
         
         if(isTouching(Worm.class))
         {
-            removeTouching(Worm.class);
+            eat(Worm.class);
             Greenfoot.playSound("slurp.wav");
     
             world = (CrabWorld)getWorld();
